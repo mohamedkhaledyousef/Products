@@ -1,3 +1,36 @@
-<p>
-  edit works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Update Product</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Product SKU" formControlName="sku" #sku>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Product Name" formControlName="name" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Categories" formControlName="categories" #categories>
+          <mat-option value="Technology">Technology</mat-option>
+          <mat-option value="Medical">Medical</mat-option>
+          <mat-option value="Study">Study</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Price" formControlName="price" #price></textarea>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Date" formControlName="date" #date>
+      </mat-form-field>
+    
+    <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="updateProduct(sku.value, name.value, categories.value, price.value, date.value )" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

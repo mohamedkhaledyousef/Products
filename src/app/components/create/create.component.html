@@ -1,3 +1,36 @@
-<p>
-  create works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create a new Product</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Product SKU" formControlName="sku" #sku>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Product Name" formControlName="name" #name>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Categories" formControlName="categories" #categories>
+          <mat-option value="Technology">Technology</mat-option>
+          <mat-option value="Medical">Medical</mat-option>
+          <mat-option value="Study">Study</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Price" formControlName="price" #price></textarea>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Date" formControlName="date" #date>
+      </mat-form-field>
+    
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addProduct(sku.value, name.value, categories.value, price.value, date.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
